@@ -8,8 +8,9 @@ export default function Document() {
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0"
         />
+        <link href="https://css.gg/css?=" rel="stylesheet" />
       </Head>
-      <body>
+      <body className="overflow-hidden">
         <Main />
         <NextScript />
       </body>

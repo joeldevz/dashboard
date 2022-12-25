@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useState } from "react";
 import IconsGoogle from "../Icons/IconsGoogle";
 
@@ -12,16 +13,19 @@ const SideBar = () => {
           name="home"
         />
       ),
+      url: "/dashboard",
       mobile: true,
     },
     {
-      title: "Inbox",
+      title: "TPV",
       src: (
         <IconsGoogle
           className=" text-3xl hover:scale-110 transition-transform "
           name="storefront"
         />
       ),
+      url: "/dashboard/tpv",
+
       mobile: true,
     },
     {
@@ -32,6 +36,8 @@ const SideBar = () => {
           name="barcode_scanner"
         />
       ),
+      url: "/dashboard",
+
       mobile: true,
     },
     {
@@ -42,28 +48,30 @@ const SideBar = () => {
           name="inventory"
         />
       ),
+      url: "/dashboard",
+
       mobile: true,
     },
   ];
 
   return (
     <>
-      <div className="h-full absolute hidden md:flex">
+      <div className="h-full absolute hidden md:flex z-40">
         <div
           className={` ${
             open ? "w-72" : "w-20 "
-          } bg-black my-4 ml-4  p-5  rounded-3xl pt-8 relative duration-300 shadow-lg shadow-black`}
+          } bg-black dark:bg-gray-300 my-4 ml-4  p-5  rounded-3xl pt-8 relative duration-300 shadow-lg shadow-black`}
         >
           <div
-            className={`absolute cursor-pointer bg-gray-900 -right-3 top-20 w-7 rounded-full  `}
+            className={`absolute cursor-pointer bg-gray-900 dark:bg-gray-300  -right-3 top-20 w-7 rounded-full  `}
             onClick={() => setOpen(!open)}
           >
             {open ? (
-              <span class="material-symbols-outlined text-white ">
+              <span class="material-symbols-outlined text-white dark:text-black ">
                 arrow_back_ios
               </span>
             ) : (
-              <span class="material-symbols-outlined text-white">
+              <span class="material-symbols-outlined text-white dark:text-black">
                 arrow_forward_ios
               </span>
             )}
@@ -75,12 +83,12 @@ const SideBar = () => {
               }`}
             >
               <IconsGoogle
-                className=" text-white text-4xl"
+                className=" text-white dark:text-black text-4xl"
                 name="lunch_dining"
               />
             </div>
             <h1
-              className={`text-white origin-left font-medium text-xl duration-200 ${
+              className={`text-white dark:text-black origin-left font-medium text-xl duration-200 ${
                 !open && "scale-0"
               }`}
             >
@@ -89,20 +97,21 @@ const SideBar = () => {
           </div>
           <ul className="pt-6">
             {Menus.map((Menu, index) => (
-              <li
-                key={index}
-                className={`flex  rounded-md p-1.5 cursor-pointer hover:bg-gray-900 text-gray-300 text-sm items-center gap-x-4  hover:scale-110 transition-transform
+              <Link href={Menu.url} key={index}>
+                <li
+                  className={`flex  rounded-md p-1.5 cursor-pointer  dark:text-black text-gray-300 text-sm items-center gap-x-4  hover:scale-110 transition-transform
               ${Menu.gap ? "mt-9" : "mt-2"} ${
-                  index === 0 && "bg-light-white"
-                } `}
-              >
-                {Menu.src}
-                <span
-                  className={`${!open && "hidden"} origin-left duration-300 `}
+                    index === 0 && "bg-light-white"
+                  } `}
                 >
-                  {Menu.title}
-                </span>
-              </li>
+                  {Menu.src}
+                  <span
+                    className={`${!open && "hidden"} origin-left duration-300 `}
+                  >
+                    {Menu.title}
+                  </span>
+                </li>
+              </Link>
             ))}
           </ul>
         </div>

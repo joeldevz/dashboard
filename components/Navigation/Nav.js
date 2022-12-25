@@ -5,17 +5,19 @@ const Nav = () => {
   return (
     <>
       <nav className="flex flex-wrap items-center mt-2 justify-between ">
-        <h3 className="text-4xl font-bold">Good morning, Alexandra!</h3>
+        <h3 className="text-4xl font-bold dark:text-gray-300">
+          Good morning, Alexandra!
+        </h3>
         <div className="toggle hidden w-full md:w-auto md:flex text-right text-bold mt-5 md:mt-0 border-t-2 border-blue-900 md:border-none">
           <a
             href="#"
-            className="block md:inline-block text-black hover:text-gray-800 px-3 py-3 border-b-2 border-blue-900 md:border-none"
+            className="block md:inline-block text-black dark:text-gray-300 hover:text-gray-800 px-3 py-3 border-b-2 border-blue-900 md:border-none"
           >
             <span className="material-symbols-outlined">today</span>
           </a>
           <a
             href="#"
-            className="block md:inline-block text-black hover:text-gray-800 px-3 py-3 border-b-2 border-blue-900 md:border-none"
+            className="block md:inline-block text-black dark:text-gray-300 hover:text-gray-800 px-3 py-3 border-b-2 border-blue-900 md:border-none"
           >
             <span className="material-symbols-outlined">notifications</span>
           </a>

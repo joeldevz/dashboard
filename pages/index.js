@@ -7,25 +7,27 @@ import { CODE_HTTP } from "../functions/code";
 import IconsGoogle from "../components/Icons/IconsGoogle";
 import cookie from "js-cookie";
 import { redirect } from "next/dist/server/api-utils";
+import { useSelector } from "react-redux";
 export default function Register() {
   const [Credentials, setCredentials] = useState({ email: "", password: "" });
   const [visiblePass, setVisiblePass] = useState(true);
   const [error, setError] = useState("");
-
+  const loginState = useSelector((state) => state.login);
+  console.log("loginState", loginState);
   const saveCredentials = (e) => {
     setCredentials({ ...Credentials, [e.target.name]: e.target.value });
   };
   const loggin = async (e) => {
     setError("");
     e.preventDefault();
-    if (!checkPassword(Credentials.password))
+    /* if (!checkPassword(Credentials.password))
       return setError("No Cumple los Requirimientos");
     const query = await singin(Credentials);
     if (query.statusCode !== CODE_HTTP.SUCCESS) {
       return errorAuth(query.statusCode, setError);
     }
-    cookie.set("access", query.data);
-    location.href = "/dashboard/employees";
+    cookie.set("access", query.data); */
+    location.href = "/dashboard";
   };
 
   return (

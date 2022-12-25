@@ -1,22 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import IconsGoogle from "../Icons/IconsGoogle";
-import CardBase from "./CardBase";
 
-const CardStatistics = ({ children, count, icon, small }) => {
+const CardStatistics = ({ count, icon, small, title }) => {
   return (
     <>
-      <CardBase className={` bg-slate-100 `}>
-        <div className="grid grid-cols-2">
-          <IconsGoogle name={icon} className="text-5xl" />
-          <IconsGoogle name="more_vert" className="text-4xl text-right" />
-        </div>
-        <div className=" mt-3">
-          <h3 className=" text-3xl  font-bold">
+      <div class="w-full max-w-sm bg-white rounded-xl border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <div class="flex flex-col items-center py-10 text-center">
+          <IconsGoogle name={icon} className="text-5xl mb-3 " />
+          <span class="text-md text-black dark:text-gray-400">
             {count} <small className="font-semibold text-base">{small}</small>
-          </h3>
-          <div className="mt-3">{children}</div>
+          </span>
+          <h5 class="mb-1 text-lg font-medium  text-gray-900 dark:text-white">
+            {title}
+          </h5>
         </div>
-      </CardBase>
+      </div>
     </>
   );
 };

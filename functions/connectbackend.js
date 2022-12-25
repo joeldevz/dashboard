@@ -6,6 +6,7 @@ export const exitSession = () => {
   location.href = "/dashboard/employeer";
 };
 import cookie from "js-cookie";
+import axios from "axios";
 
 export const singin = async (body) => {
   return fetch(`${URI}/singin`, {
@@ -22,6 +23,8 @@ export const singin = async (body) => {
     })
     .catch((err) => {
       console.log(err);
+
+      return err;
     });
 };
 export const singup = async (body) => {
@@ -43,12 +46,18 @@ export const singup = async (body) => {
     });
 };
 export const getAllEmployeer = async (token) => {
+  const result = await axios.post(`${URI}/employee/all`, {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
+  console.log(result.data);
+  return result.data;
   return fetch(`${URI}/employee/all`, {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
-    mode: "cors", // no-cors, *cors, same-origin
+    // mode: "cors", // no-cors, *cors, same-origin
     headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + token,
+      //"Content-Type": "application/json",
       // 'Content-Type': 'application/x-www-form-urlencoded',
     },
   })
@@ -58,6 +67,7 @@ export const getAllEmployeer = async (token) => {
     })
     .catch((err) => {
       console.log(err);
+      return { error: true };
     });
 };
 export const GetAllClient = () => {

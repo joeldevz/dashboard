@@ -7,22 +7,28 @@
   src: url(./iconGoogle.woff2) format("woff2");
 }
 
-.material-symbols-outlined {
-  font-family: "Material Symbols Outlined";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -webkit-font-feature-settings: "liga";
-  -webkit-font-smoothing: antialiased;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--primary);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: black;
+  @apply bg-white dark:bg-black;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  border: 3px solid var(--primary);
+  @apply bg-black dark:bg-white;
+}
